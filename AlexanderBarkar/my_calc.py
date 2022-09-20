@@ -18,4 +18,4 @@ def div_(a, b):
 
 
 def pow_(a, b):
-    return a ** b
+    return a**b
