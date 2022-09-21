@@ -58,3 +58,13 @@ print('Разность =', difference(x, y))
 print('Умножение =', multiplication(x, y))
 print('Деление =', subtraction(x, y))
 print('Возведение в степень =', degree(x, y))
+
+
+def tests():
+    assert summa(5, 8) == 13, f"Сумма чисел вычислена ошибочно, актуальный результат {summa(5, 8)}"
+    assert difference(8, 5) == 3, f"Разность чисел вычислена ошибочно, актуальный результат {difference(8, 5)}"
+    assert multiplication(5, 5) == 25, f"Умножение чисел вычислено ошибочно, актуальный результат {multiplication(5, 5)}"
+    assert subtraction(10, 5) == 2, f"Деление чисел вычислено ошибочно, актуальный результат {subtraction(10, 5)}"
+    assert subtraction(10, 0) == "Деление на ноль запрещено!"
+    assert degree(5, 2) == 25, f"Возведение в степень чисел вычислено ошибочно, актуальный результат {degree(5, 2)}"
+tests()
