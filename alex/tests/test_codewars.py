@@ -1,6 +1,6 @@
 import pytest
-from AlexanderBarkar.codewars import counting_valleys
-from AlexanderBarkar.codewars import user_friendly_size
+from alex.codewars import counting_valleys
+from alex.codewars import user_friendly_size
 
 cases = (
     ("UFFFD", 0),

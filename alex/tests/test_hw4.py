@@ -1,5 +1,5 @@
 import pytest
-from AlexanderBarkar.my_calc import *
+from alex.my_calc import *
 
 test_cases = ((1, 2), (3, 4), (-1, 4), (3, -10), (10, 0), (0, 6), (-4, 2), (18, -7))
 
