@@ -1,7 +1,6 @@
 import os
 import math
 
-
 # def user_friendly_size(file_size):
 #     sizes = {40: 'TB', 30: 'GB', 20: 'MB', 10: 'kB', 0: 'B'}
 #     if isinstance(file_size, str):
