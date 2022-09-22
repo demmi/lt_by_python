@@ -1,5 +1,5 @@
 import pytest
-from homework4_1 import *
+from alex.homework4_1 import *
 from random import sample
 
 test_cases = set(sample(range(12345678, 123456789), 20))
