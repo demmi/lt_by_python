@@ -1,5 +1,5 @@
 # Переменные. ВВод и вывод данных.
-# HomeWork 1
+# ----- HomeWork 1 -----
 # greeting = '"Hello, World!"'
 # print(greeting)
 # user_name = input('Enter your name: ')
