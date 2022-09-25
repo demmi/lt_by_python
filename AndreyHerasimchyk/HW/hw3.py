@@ -9,11 +9,11 @@ print_nested_list(my_list)
 
 # 3.2
 def sum_of_numbers(arr):
-    return sum([x for x in list_1 if isinstance(x, int)])
+    return sum([x for x in arr if isinstance(x, int)])
 
 
 def contains_a(arr):
-    return [x for x in list_1 if isinstance(x, str) and "a" in x]
+    return [x for x in arr if isinstance(x, str) and "a" in x]
 
 
 list_1 = ["Hi", "ananas", 2, None, 75, "pizza", 36, 100]
