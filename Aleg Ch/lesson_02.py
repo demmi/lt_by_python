@@ -71,7 +71,7 @@
 # name = input('Enter your name: ')
 # for letter in name:  # for перебирает name по символам и не требует условий
 #     print(letter)  # letter - просто временная переменная
-# Распеатка вертикальная - с переводом строки
+# Распечатка вертикальная - с переводом строки
 #
 # for letter in 'Python':
 #     if letter == 'h':
@@ -96,7 +96,7 @@
 # for i in range(5, 1, -1):  # start 5, stop 1, step -1 - обратный отсчет от 5 до 2
 #     print(i)
 #
-# for i in range(1, 4):  # start 1, stop 4, step по умоланию 1 - отсчет от 1 до 3
+# for i in range(1, 4):  # start 1, stop 4, step по умолчанию 1 - отсчет от 1 до 3
 #     print(i)
 #
 # for i in range(-3, 0):

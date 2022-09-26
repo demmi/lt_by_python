@@ -1,12 +1,11 @@
 # a = 3.45
 # print(a)
 # print(type(a))
-# print('---------------')
-
+#
 # b = str(a)
 # print(f'*** {b} ***')
 # print(type(b))
-# print('---------------')
+#
 # print("Comment: 1) # 2) ''' 3) select and ctrl/")
 # print('''012345
 # 678910
