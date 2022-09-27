@@ -35,16 +35,16 @@
 # l1 = [8, 7, 5, 10]
 # print(max(l1))  # max item: 10
 # print(min(l1))  # min item: 5
-
+#
 # --- Сравнение списков
-
-l1 = [8, 7, 5, 10]
-l2 = [1, 2, 3, 4, 555]
-l3 = [9, 2]
-
-print(l1 > l2)  # True - списки сравниваются поэлементно
-print(l1 > l3)  # False
-
+#
+# l1 = [8, 7, 5, 10]
+# l2 = [1, 2, 3, 4, 555]
+# l3 = [9, 2]
+#
+# print(l1 > l2)  # True - списки сравниваются поэлементно
+# print(l1 > l3)  # False
+#
 # print(l1 + l2)  # [8, 7, 5, 10, 1, 2]
 #
 # # ----- In-place list mutating
@@ -162,11 +162,11 @@ print(l1 > l3)  # False
 # print(c)  # cat
 # print(a, b, c)  # apple banana cat
 #
-# letters[0] = 'ananas'   # изменение элементов в кортеже невозможно
+# letters[0] = 'ananas'   # изменение элементов в кортеже невозможно: name 'letters' is not defined
 # print(letters)
 #
 # letters = list(letters)  # функция list делает кортеж списком
-# letters[0] = 'ananas'  # тогда можно изменить элемент в списке letters
+# letters[0] = 'ananas'  # тогда в списке letters можно изменить элемент
 # print(letters)  # список letters: ['ananas', 'banana', 'cat']
 # print(tuple(letters))  # сконвертировали список в новый кортеж: ('ananas', 'banana', 'cat')
 #
@@ -177,7 +177,7 @@ print(l1 > l3)  # False
 #
 # # ----- Filtering (Фильтрация)
 # my_tuple = (1, True, 'name', None, 'name', 'name',25)
-# result = tuple(filter(lambda x: isinstance(x, int), my_tuple))
+# result = tuple(filter(lambda x: isinstance(x, int), my_tuple))  # isinstance(x, int) - x экземпляр класса int
 # result1 = tuple(filter(lambda x: isinstance(x, str), my_tuple))
 # print(result)  # отфильтрованы целые числа: (1, True, 25)
 # print(result1)  # отфильтрованы строчные данные: ('name', 'name', 'name')
@@ -189,7 +189,7 @@ print(l1 > l3)  # False
 # print(f'Sum is: {sum(result)}')  # Сумма целых чисел: Sum is: 27
 # print(f'Max is: {max(result)}')  # Max is: 25
 # print(f'Min is: {min(result)}')  # Min is: 1
-# print(f'Length of my_tuple is: {len(my_tuple)}')  # Длина кортежа: Length of my_tuple is: 7
+# print(f'Length of my_tuple is: {len(my_tuple)}')  # Длина (количество элементов): Length of my_tuple is: 7
 # print(f'Length of result is: {len(result)}')  # Длина отфильтрованного результата: Length of result is: 3
 #
 # # ----- Iterate tuple with for loop ( то же для list и для str)
@@ -214,7 +214,7 @@ print(l1 > l3)  # False
 # a, b = b, a
 # print(f'a = {a}')  # a = 10
 # print(f'b = {b}')  # b = 5
-#
+# -----
 # # Passing tuple as an argument in function (Передача кортежа, как аргумента, в функцию)
 # def sum_it(*args):  # * - означает, что кортеж args (аргумент) распаковывается
 #     total = 0
@@ -224,7 +224,7 @@ print(l1 > l3)  # False
 #
 #
 # print(sum_it(4, 5, 10, 6, 20))  # выводится сумма всех элементов: 45
-#
+# -----
 # def func(*args):    # приходит произвольное количество аргументов
 #     l = []          # сохраняем их в новый список
 #     for item in args:  # и каждый из аргументов
@@ -237,7 +237,7 @@ print(l1 > l3)  # False
 #
 # # -------------------- DICTIONARIES --------------------
 # my_dict = {
-#     'name': 'Anna',  # пара - уникальный ключ : значение
+#     'name': 'Anna',  # пара - уникальный ключ: значение
 #     'last_name': 'Pavlova',
 #     'age': 30,
 #     'department': 'IT'
@@ -260,9 +260,8 @@ print(l1 > l3)  # False
 # print(my_dict.get('salary', 'Not found'))  # метод .get - получить значение ключа 'salary', если не найдено: Not found
 # print(my_dict.get('name', 'Not found'))  # по ключу 'name' найдено значение: Anna
 #
-#
 # # -------------------- SETS (Множества)  --------------------
-# print(set([1, 8, 2, 1, 5, 8, 9]))  # удаляются не уникальные ключи {1, 2, 5, 8, 9}
+# print(set([1, 8, 2, 1, 5, 8, 9]))  # {1, 2, 5, 8, 9} удаляются не уникальные ключи
 #
 # set1 = {1, 2, 3, 'one', 'ten'}
 # set2 = {1, 2, 3, 'one', 'ten', 100, 525}
