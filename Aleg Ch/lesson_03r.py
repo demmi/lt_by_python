@@ -88,10 +88,10 @@
 # - найдите значения, которые встречаются в обоих множествах
 # - найдите значения, которые не встречаются в обоих множествах
 # - проверьте являются ли эти множества подмножествами друг друга
-set1 = {'a', 'z', 1, 5, 9, 12, 100, 'b'}
-set2 = {5, 'z', 1, 8, 9, 21, 100, 'l', 785}
-print(set1.intersection(set2))  # {1, 100, 5, 9, 'z'}
-print(set1.symmetric_difference(set2))  # {'a', 8, 'b', 12, 785, 21, 'l'}
-print(set1.difference(set2), set2.difference(set1))  # {'a', 'b', 12} {8, 785, 'l', 21}
-print(set1.issubset(set2))  # False
-print(set2.issubset(set1))  # False
+# set1 = {'a', 'z', 1, 5, 9, 12, 100, 'b'}
+# set2 = {5, 'z', 1, 8, 9, 21, 100, 'l', 785}
+# print(set1.intersection(set2))  # {1, 100, 5, 9, 'z'}
+# print(set1.symmetric_difference(set2))  # {'a', 8, 'b', 12, 785, 21, 'l'}
+# print(set1.difference(set2), set2.difference(set1))  # {'a', 'b', 12} {8, 785, 'l', 21}
+# print(set1.issubset(set2))  # False
+# print(set2.issubset(set1))  # False
