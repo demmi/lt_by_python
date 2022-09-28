@@ -1,33 +1,47 @@
-# ВСТРОЕННЫЕ ФУНКЦИИ (BUILT-IN FUNCTIONS)
-min_arg = min(5, 6, 8, 10)
-print(min_arg)
-#
-# FUNCTIONS
+# ---------- FUNCTIONS ----------
 
-# def person(age, last_name='Smith', name='Anna'):
-#     return 'Hello, my name is' {name} {last_name}. I am {age} years old'
+# def person(age, last_name, name):  # позиционные параметры
+#     return f'Hello, my name is {name} {last_name}. I am {age} years old'
 #
-# print(person(name='Alce', age=30))
+#
+# print(person(30, 'Smith', 'Anna'))  # Hello, my name is Anna Smith. I am 30 years old
+# print(person('Smith', 'Anna', 18))  # Hello, my name is 18 Anna. I am Smith years old - нарушен порядок аргументов :)
+
+
+# def person(age, last_name='Smith', name='Anna'):  # два именованных параметра
+#     return f'Hello, my name is {name} {last_name}. I am {age} years old'
+#
+#
+# print(person(33))  # Hello, my name is Anna Smith. I am 33 years old - можно не указывать значения по умолчанию
+# print(person(34, last_name='Price'))  # Hello, my name is Anna Price. I am 34 years old
+# # print(person(last_name='Price', 34))  # SyntaxError: на 1-м месте д.б. ПОЗИЦИОННЫЙ аргумент!
+# print(person(last_name='Price', age=34))  # для именованных аргументов порядок можно не соблюдать
 
 
 # def pattern(length, char1='-', char2='*'):
 #     return (char1 + char2) * length + char1
 #
-# print(pattern(char1='*', length=9))
+#
+# print(pattern(char1='/', length=9))  # /*/*/*/*/*/*/*/*/*/
+
+# ---------- ВСТРОЕННЫЕ ФУНКЦИИ (BUILT-IN FUNCTIONS) ----------
+# min_arg = min(5, 6, 8, 10)
+# print(min_arg)
 
 
-# ПРОСТРАНСТВО ИМЕН (SCOPE)
+# ---------- ПРОСТРАНСТВО ИМЕН (SCOPE) ----------
 # x = 15
 # y = 78
 # def sum_it(x, y):
-#     print(f'Locals: {locals()}')
+#     print(f'Locals: {locals()}')  # Locals: {'x': 5, 'y': 8}
 #     return x + y
 #
-# print(f'Inside the function: {sum_it(5, 8)}')
-# print(f'Outside the function: {x + y}')
-# print(f'Globals: {globals()}')
+#
+# print(f'Inside the function: {sum_it(5, 8)}')  # Inside the function: 13
+# print(f'Outside the function: {x + y}')  # Outside the function: 93
+# print(f'Globals: {globals()}')  # Globals: {тут покажет длинную строку - все о программе}
 
-# ВСТРОЕННЫЕ МОДУЛИ (BUILT-IN MODULES)
+# ---------- ВСТРОЕННЫЕ МОДУЛИ (BUILT-IN MODULES) ----------
 # from math import *
 # import math as m
 #
@@ -44,16 +58,17 @@ print(min_arg)
 # print(current_age)
 # print(current_month)
 
-# lambda functions
-# mult = lambda x, y: x*y
-# print(mult(5, 8))
+# ----- lambda functions
+# lambda функция используется, когда нужен быстрый результат
 
-#
-# print(f(4, 2))
+# print((lambda x, y: x * y)(5, 8))  # 40 - функция в 1 строчку и тут же передали аргументы
+
+# mult = lambda x, y: x * y  # 40 - lambda функцию можно задать через переменную
+# print(mult(5, 8))  # и вывести результат через переменную
 #
 #
 # print('------Sum list_1 With function and for loop----------')
-list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
+# list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # def filter_and_sum_nums(l):
 #     new_l = []
 #     for i in l:
@@ -62,11 +77,13 @@ list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 #     return sum(new_l)
 #
 #
-# print(filter_and_sum_nums(list_1))
+# print(filter_and_sum_nums(list_1))  # сумма чисел в списке 213
 #
 # print('--------Sum list_1 with lambda and filter----------')
-# print(sum((filter(lambda x: isinstance(x, int), list_1))))
+# list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
+# print(sum((filter(lambda x: isinstance(x, int), list_1))))  # сумма чисел в списке 213 - в 1 строку
 #
+# ************************************** видео 29:46
 #
 # print('------Filter odd_nums with custom function----------')
 # def take_odd(num):
