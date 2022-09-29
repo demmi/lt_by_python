@@ -58,8 +58,8 @@
 # print(current_age)
 # print(current_month)
 
-# ----- lambda functions
-# lambda функция используется, когда нужен быстрый результат
+# ---------- lambda functions ----------
+# lambda функция используется, когда ненадолго требуется безымянная функция, имеет лишь одно выражение
 
 # print((lambda x, y: x * y)(5, 8))  # 40 - функция в 1 строчку и тут же передали аргументы
 
@@ -83,37 +83,47 @@
 # list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # print(sum((filter(lambda x: isinstance(x, int), list_1))))  # сумма чисел в списке 213 - в 1 строку
 #
-# ************************************** видео 29:46
+#
 #
 # print('------Filter odd_nums with custom function----------')
+# list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
+#
+#
 # def take_odd(num):
-#     if isinstance(num, int) and num%2:
+#     if isinstance(num, int) and num % 2:
 #         return True
 #     return False
 #
-# print(list(filter(take_odd, list_1)))
 #
-# list_3 = [1, 2, 5, 8, 10, 105, 78]
-# print(list(filter(take_odd, list_3)))
+# print(list(filter(take_odd, list_1)))  # [75] список нечетных чисел
 #
 # print('-----Filer odd_nums with lambda----------')
-# filtered = list(filter(lambda x: isinstance(x, int), list_1))
-# print(list(filter(lambda x: x%2, filtered)))
+# filtered = list(filter(lambda x: isinstance(x, int), list_1))  # отфильтровали числа, в список
+# print(list(filter(lambda x: x % 2, filtered)))  # а потом отфильтровали нечётные, в список
 #
-# print(list(filter(lambda x: x%2, list_3)))
+# list_3 = [1, 2, 5, 8, 10, 105, 78]  # если имеем другой список, однородный
+# print(list(filter(take_odd, list_3)))  # то можем вызвать для него уже готовую функцию take_odd: [1, 5, 105]
+#
+# print(list(filter(lambda x: x % 2, list_3)))  # [1, 5, 105] то же для list_3 через lambda
 #
 # print('-----Filer strings with "a" using custom function ----------')
+# list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # new_l = []
 # for item in list_1:
 #     if isinstance(item, str) and 'a' in item:
 #         new_l.append(item)
 # print(new_l)
-# #
+#
 # print('-----Filer strings with "a" using lambda ----------')
 # filtered = list(filter(lambda x: isinstance(x, str), list_1))
 # print(list(filter(lambda x: 'a' in x, filtered)))
-
-# MODULES
+# print(list(filter(lambda x: 'a' not in x, filtered)))  # ['Hi'] - слова, где нет 'a'
+#
+# --- но тут лучше методом list comprehension ---
+# print([word for word in list_1 if type(word) == str if 'a' in word])  # ['ananas', 'pizza']
+#
+# ///// 39:30
+# -------------------- MODULES --------------------
 # import functools
 # from functools import reduce
 # res = reduce(lambda x, y: x*y, [1, 5, 8, 11, 13])

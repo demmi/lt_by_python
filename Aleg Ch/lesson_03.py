@@ -1,14 +1,14 @@
-# # Структуры данных. Списки, кортежи, словари и множества: lists, tuples, dictionaries, sets
-# # ----------------------- LISTS -----------------------
-# # ----- Create a list: option 1
+# Структуры данных. Списки, кортежи, словари и множества: lists, tuples, dictionaries, sets
+# ----------------------- LISTS -----------------------
+# ----- Create a list: option 1
 # lst = []  # [] - квадратные скобки означают список
 # print(lst)
 #
-# # ----- Create a list: option 2
+# ----- Create a list: option 2
 # lst = [1, 'string', 12.3, 'Hello', 25]
 # print(lst)
 #
-# # ----- Create a list: option 3
+# ----- Create a list: option 3
 # sentence = 'What a wonderful life!'
 # my_list = list(sentence)  # переменная sentence - аргумент для функции list
 # print(my_list)  # по умолчанию выводит отдельно каждый символ в кавычках: ['W', 'h', ...]
@@ -118,28 +118,28 @@
 # print(letters[::-2])  # реверс с шагом 2: ['f', 'd', 'b']
 # print(letters[2:])  # с третьего до конца: ['c', 'd', 'e', 'f']
 #
-# # --- Метод list comprehension (дословно, понимание или осмысление списка)
-# #
+# --- Метод list comprehension (дословно, понимание или осмысление списка)
+#
 # l = [1, 2, 3, 4, 5]
 # new_l = []
 # for x in l:  # для переменной x в списке l
 #     if x % 2:  # если x нечетное (или то же самое if x % 2 != 0:)
 #         new_l.append(x * x)  # формируем новый список из элементов, равных x * x
 # print(new_l)  # [1, 9, 25]
-# # --- То же самое, более кратким синтаксисом:
+# --- То же самое, более кратким синтаксисом list comprehension:
 # new_l = [x * x for x in l if x % 2]  # список из x * x для x из списка l, если x нечетное
 # print(new_l)  # [1, 9, 25]
-# # - если хотим для четных чисел, то меняем условие так:
+# - если хотим для четных чисел, то меняем условие так:
 # new_l = [x * x for x in l if x % 2 == 0]
 # print(new_l)
 #
-# # ----------------------- TUPLES -----------------------
+# ----------------------- TUPLES -----------------------
 #
-# # ----- Create a tuple: option 1
-mytuple = 1, 2, 3  # кортеж пишется через запятую
-print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых скобках
+# ----- Create a tuple: option 1
+# mytuple = 1, 2, 3  # кортеж пишется через запятую
+# print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых скобках
 #
-# # ----- Create a tuple: option 2
+# ----- Create a tuple: option 2
 # my_tuple = (1, True, 'name', None, 'name', 'name', 25)  # можно в круглых скобках
 # print(my_tuple)  # (1, True, 'name', None, 'name', 'name', 25)
 #
@@ -170,19 +170,19 @@ print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых 
 # print(letters)  # список letters: ['ananas', 'banana', 'cat']
 # print(tuple(letters))  # сконвертировали список в новый кортеж: ('ananas', 'banana', 'cat')
 #
-# # ----- Getting index of items
+# ----- Getting index of items
 # my_tuple = (1, True, 'name', None, 'name', 'name',25)
 # print(my_tuple.index('name'))  # 2 - индекс первого по порядку 'name'
 # print(my_tuple.count('name'))  # 3 - 'name' встречается 3 раза
 #
-# # ----- Filtering (Фильтрация)
+# ----- Filtering (Фильтрация)
 # my_tuple = (1, True, 'name', None, 'name', 'name',25)
 # result = tuple(filter(lambda x: isinstance(x, int), my_tuple))  # isinstance(x, int) - x экземпляр класса int
 # result1 = tuple(filter(lambda x: isinstance(x, str), my_tuple))
 # print(result)  # отфильтрованы целые числа: (1, True, 25)
 # print(result1)  # отфильтрованы строчные данные: ('name', 'name', 'name')
 #
-# # --- Tuple methods
+# --- Tuple methods
 # my_tuple = (1, True, 'name', None, 'name', 'name', 25)
 # result = tuple(filter(lambda x: isinstance(x, int), my_tuple))
 # print(result)
@@ -192,30 +192,30 @@ print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых 
 # print(f'Length of my_tuple is: {len(my_tuple)}')  # Длина (количество элементов): Length of my_tuple is: 7
 # print(f'Length of result is: {len(result)}')  # Длина отфильтрованного результата: Length of result is: 3
 #
-# # ----- Iterate tuple with for loop ( то же для list и для str)
+# ----- Iterate tuple with for loop ( то же для list и для str)
 # my_tuple = (1, True, 'name', None, 'name', 'name', 25)
 # for (index, item) in enumerate(my_tuple):  # enumerate - перечислить index для каждого item
 #     print(index, '-', item, end='; ')  # 0 - 1; 1 - True; 2 - name; 3 - None; 4 - name; 5 - name; 6 - 25;
 #
-# # ----- iterate tuple with while loop
+# ----- iterate tuple with while loop
 # i = 0
 # while i < len(my_tuple):
 #     print(my_tuple[i])  # вывод каждого элемента, пока i < длины кортежа
 #     i += 1
 #
-# # ----- Nested list in tuple (Вложенный список в кортеже)
+# ----- Nested list in tuple (Вложенный список в кортеже)
 # letters = ('apple', ['ananas', 'mango'], 'melon')
 # letters[1][0] = 'cherry'  # во 2м элементе кортежа [списке] меняем 1й элемент 'ananas'
 # print(letters)  # ('apple', ['cherry', 'mango'], 'melon')
 #
-# # ----- swaping variables (Обмен переменных)
+# ----- swaping variables (Обмен переменных)
 # a = 5
 # b = 10
 # a, b = b, a
 # print(f'a = {a}')  # a = 10
 # print(f'b = {b}')  # b = 5
 # -----
-# # Passing tuple as an argument in function (Передача кортежа, как аргумента, в функцию)
+# Passing tuple as an argument in function (Передача кортежа, как аргумента, в функцию)
 # def sum_it(*args):  # * - означает, что кортеж args (аргумент) распаковывается
 #     total = 0
 #     for num in args:
@@ -235,7 +235,7 @@ print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых 
 # print(func(2, 5, 6, 8, 10))  # получили список с новыми значениями: [4, 25, 36, 64, 100]
 # --- ! Кортеж работает быстрее и занимает меньше памяти, чем список
 #
-# # -------------------- DICTIONARIES --------------------
+# -------------------- DICTIONARIES --------------------
 # my_dict = {
 #     'name': 'Anna',  # пара - уникальный ключ: значение
 #     'last_name': 'Pavlova',
@@ -260,7 +260,7 @@ print(mytuple)  # (1, 2, 3) - кортеж выводится в круглых 
 # print(my_dict.get('salary', 'Not found'))  # метод .get - получить значение ключа 'salary', если не найдено: Not found
 # print(my_dict.get('name', 'Not found'))  # по ключу 'name' найдено значение: Anna
 #
-# # -------------------- SETS (Множества)  --------------------
+# -------------------- SETS (Множества)  --------------------
 # print(set([1, 8, 2, 1, 5, 8, 9]))  # {1, 2, 5, 8, 9} удаляются не уникальные ключи
 #
 # set1 = {1, 2, 3, 'one', 'ten'}
