@@ -122,12 +122,18 @@
 # --- но тут лучше методом list comprehension ---
 # print([word for word in list_1 if type(word) == str if 'a' in word])  # ['ananas', 'pizza']
 #
-# ///// 39:30
+#
 # -------------------- MODULES --------------------
+# ///// 39:50
+from functools import reduce
+res = reduce(lambda x, y: x*y, [1, 5, 8, 11, 13])
+print(res)
+#
 # import functools
 # from functools import reduce
 # res = reduce(lambda x, y: x*y, [1, 5, 8, 11, 13])
 # print(res)
+#
 #
 # from my_file import *
 # res = sum_it(5, 8)

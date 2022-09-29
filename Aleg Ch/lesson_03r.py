@@ -3,7 +3,13 @@
 # ==---------- 3.1 ----------
 # Распечатайте значения 1, 2, 3
 # my_list = ['a', 'b', [1, 2, 3], 'd']
-# print(my_list[2])  # [1, 2, 3]
+# print(my_list[2])  # [1, 2, 3]  # но позиция [2] может измениться
+# --- тогда:
+# for x in my_list:
+#     if type(x) == list:
+#         print(x)  # [1, 2, 3]
+# [print(x) for x in my_list if type(x) == list]  # [1, 2, 3]
+# print([x for x in my_list if type(x) == list])  # [1, 2, 3]
 #
 # ==---------- 3.2 ----------
 # - получите сумму всех чисел,
@@ -15,12 +21,28 @@
 # print(sum(lst2))  # - сумма всех чисел 213
 # print(sum([x for x in list_2 if type(x) == int]))  # или так, в одну строку
 # -----
+# list_2 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # for word in list_2:
 #     if type(word) == str and 'a' in word:
 #         print(word)
 # ananas
 # pizza
-#
+# -----
+# list_2 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
+# tmp = []
+# for word in list_2:
+#     if type(word) == str and 'a' in word:
+#         tmp.append(word)
+# print(tmp)  # ['ananas', 'pizza']
+# -----
+# list_2 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
+# tmp = ''
+# for word in list_2:
+#     if type(word) == str and 'a' in word:
+#         tmp = tmp + word + ' '
+# print(tmp)
+# -----
+# list_2 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # lst2a = [word for word in list_2 if type(word) == str if 'a' in word]
 # print(lst2a)  # ['ananas', 'pizza']
 #
@@ -35,17 +57,18 @@
 # 1) Программа имеет два input() - например, family_1, family_2.
 # 2) Членов семьи нужно перечислить через запятую.
 # Ожидаемый результат - программа выводит семью с бОльшим составом. Если состав одинаковый, print("Equal')
+#
 # family_1 = input('family_1: ')
-# f1 = tuple(family_1.split(','))
+# f1 = family_1.split(',')
 # family_2 = input('family_2: ')
-# f2 = tuple(family_2.split(','))
+# f2 = family_2.split(',')
 # if len(f1) > len(f2):
 #     print(family_1)
 # elif len(f1) < len(f2):
 #     print(family_2)
 # else:
 #     print('Equal')
-#
+
 # ==---------- 3.5. ----------
 # Создайте словарь film c ключами title, director, year, budget, slogan.
 # В значения можете передать информацию о вашем любимом фильме
@@ -63,7 +86,7 @@
 # }
 # print(film.keys())
 # print(film.values())
-# print(film)
+# print(film.items())  # метод .items дает вывод пар ключ - значение
 #
 # ==---------- 3.6 ----------
 # Найдите сумму всех значений в словаре
@@ -95,3 +118,13 @@
 # print(set1.difference(set2), set2.difference(set1))  # {'a', 'b', 12} {8, 785, 'l', 21}
 # print(set1.issubset(set2))  # False
 # print(set2.issubset(set1))  # False
+#
+# **************************** REVIEW *****************************
+#
+# --- как проверить, не пустой ли список:
+# if my_list:
+#     print('True - список my_list не пустой')
+#
+# print([x for x in range(5) if x % 2])  # для чётных x % 2 == 0 == False, т.е. выводим нечётные: [1, 3]
+#
+
