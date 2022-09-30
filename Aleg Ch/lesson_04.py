@@ -84,7 +84,6 @@
 # print(sum((filter(lambda x: isinstance(x, int), list_1))))  # сумма чисел в списке 213 - в 1 строку
 #
 #
-#
 # print('------Filter odd_nums with custom function----------')
 # list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 #
@@ -98,6 +97,7 @@
 # print(list(filter(take_odd, list_1)))  # [75] список нечетных чисел
 #
 # print('-----Filer odd_nums with lambda----------')
+# list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # filtered = list(filter(lambda x: isinstance(x, int), list_1))  # отфильтровали числа, в список
 # print(list(filter(lambda x: x % 2, filtered)))  # а потом отфильтровали нечётные, в список
 #
@@ -124,18 +124,43 @@
 #
 #
 # -------------------- MODULES --------------------
-# ///// 39:50
-from functools import reduce
-res = reduce(lambda x, y: x*y, [1, 5, 8, 11, 13])
-print(res)
+# --- Основной способ
+# import calendar  # импорт модуля calendar
+# print(calendar.weekheader(3))  # по 3 буквы: Mon Tue Wed Thu Fri Sat Sun
+# - Метод weekheader(n) - для получения заголовка с днями недели, по (n) букв
 #
-# import functools
-# from functools import reduce
-# res = reduce(lambda x, y: x*y, [1, 5, 8, 11, 13])
+# import functools  # импорт модуля functools
+# res = functools.reduce(lambda x, y: x - y, [7, 1, 4])
+# print(res)  # из первого аргумента выитаются остальные: 2
+# - функция reduce() последовательно применяет функцию-аргумент к элементам списка, возвращает единичное значение
+#
+# --- Другой способ, через from:
+# from import reduce  # из модуля functools импорт функции reduce
+# res = reduce(lambda x, y: x + y, [1, 5, 8, 11, 13])  # 38 - сумма
 # print(res)
 #
+# import math  # импорт математиеского модуля math
+# print(dir(math))  # перечень функций, входящих в модуль math
+# help(math.gcd)  # справка по функции gcd: gcd(*integers) Greatest Common Divisor
+# print(math.gcd(30, 6))  # 6 наибольший общий делитель для 30 и 6
+# print(math.pi)  # 3.141592653589793 - константа "пи", для обращения к константе скобки не нужны
+# --- импорт сразу нескольких функций
+# from math import sqrt, gcd, hypot  # из модуля math импортировать функции gcd, sqrt и hypot
+# print(sqrt(16))  # 4.0 квадратный корень из 16, не надо писать "math." перед функцией
+# print(gcd(130, 20))  # 10 наибольший общий делитель для 130 и 20
+# print(hypot(3, 5))  # 5.0 гипотенуза - расстояние от начала координат до точки
 #
-# from my_file import *
+# ! --- Недостаток импорта через from
+# Если в программе уже есть переменная с таким же именем, как имя одной из
+# импортируемых функций или констант, то она окажется "затертой":
+# pi = 3.14  # назначили pi, а потом где-то сделали
+# from math import pi  # импорт pi из math - исчезает значение 3.14 переменной pi
+#
+# Однако можно изменить имя идентификатора из модуля на какое угодно:
+# from math import pi as P
+#
+# ///// 43:43
+# from my_file import *  # импортировать сразу все функции из модуля my_file
 # res = sum_it(5, 8)
 # print(res)
 #
