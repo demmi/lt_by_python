@@ -159,15 +159,25 @@
 # Однако можно изменить имя идентификатора из модуля на какое угодно:
 # from math import pi as P
 #
-# ///// 43:43
-# from my_file import *  # импортировать сразу все функции из модуля my_file
-# res = sum_it(5, 8)
-# print(res)
+# ----- Создадим свой модуль
+# Создаем в папке проекта (AlegCh) файл my_file с функцией:
+# def sum_it(x, y):
+#     return x + y
 #
+# import my_file
+# res = my_file.sum_it(8, 25)  # импортируем функцию sum_it
+# print(res)  # 33
+# --- или:
+# from my_file import sum_it, prod  # импортируем sum_it, prod
+# res = sum_it(5, 8)
+# print(res)  # 13
+# запишем в свой модуль и добавим в импорт функцию prod - умножение x * y
 # res1 = prod(5, 8)
 # print(res1)
 #
-# from my_file import *
+# ///// 48:40
+# ---------- Напишем простые тесты к нашим функциям
+# from my_file import *  # импортировать сразу все функции: import *
 # def tests():
 #     assert sum_it(5, 8) == 13, f'Wrong number, actual result is {sum_it(5, 8)}'
 #     assert prod(10, 6) == 60, f'Wrong number, actual result is {prod(10, 6)}'
