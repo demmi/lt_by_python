@@ -6,3 +6,11 @@ def prod(x, y):
     return x * y
 
 
+def div(x, y):
+    try:
+        return x / y
+    except ZeroDivisionError:
+        print("Can't divide by zero")
+
+
+

@@ -175,16 +175,19 @@
 # res1 = prod(5, 8)
 # print(res1)
 #
-# ///// 48:40
-# ---------- Напишем простые тесты к нашим функциям
-# from my_file import *  # импортировать сразу все функции: import *
-# def tests():
-#     assert sum_it(5, 8) == 13, f'Wrong number, actual result is {sum_it(5, 8)}'
-#     assert prod(10, 6) == 60, f'Wrong number, actual result is {prod(10, 6)}'
-#     assert div(10, 0) == "Can't divide by zero"
 #
-# tests()
+# ---------- Напишем простые тесты к нашим функциям
+from my_file import *  # импортировать все функции: import *
 
+
+def tests():
+    assert sum_it(5, 8) == 13, f'Wrong number, actual result is {sum_it(5, 8)}'
+    assert prod(10, 6) == 60, f'Wrong number, actual result is {prod(10, 6)}'
+    assert div(10, 0) == "Can't divide by zero"
+
+
+print(tests())
+# ///// 56:10
 # def sum_it(**kwargs):
 #     print(type(kwargs))
 #     return sum(kwargs.values())
