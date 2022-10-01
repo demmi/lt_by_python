@@ -10,7 +10,6 @@ def div(x, y):
     try:
         return x / y
     except ZeroDivisionError:
-        print("Can't divide by zero")
-
+        print("- Can't divide by zero")
 
 

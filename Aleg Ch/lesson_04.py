@@ -42,9 +42,17 @@
 # print(f'Globals: {globals()}')  # Globals: {тут покажет длинную строку - все о программе}
 
 # ---------- ВСТРОЕННЫЕ МОДУЛИ (BUILT-IN MODULES) ----------
+# import math
+# arr = [1, 2, 3, 4, 5, 10, 25]
+# new_arr = math.prod(arr)  # prod перемножает все значения
+# print(new_arr)  # 30000
+
 # from math import *
-# import math as m
-#
+# arr = [1, 2, 3, 4, 5, 10, 25]
+# new_arr = prod(arr)  # не надо указывать модуль math
+# print(new_arr)  # 30000
+
+# import math as m  # импортировали math с другим именем, как m
 # arr = [1, 2, 3, 4, 5, 10, 25]
 # new_arr = m.prod(arr)
 # print(new_arr)
@@ -53,11 +61,13 @@
 # birth_year = 1980
 # current_date = datetime.date.today()
 # current_age = current_date.year - birth_year
-# current_month = current_date.month
-# print(current_date)
+# print(current_date)  # 2022-10-01 вывели сегодняшнюю дату
 # print(current_age)
-# print(current_month)
 
+# print(datetime.date.today().year)  # сегодня 2022 год
+# print(datetime.date.today().month)  # сегодня 10 месяц
+# print(datetime.date.today().day)  # сегодня первое число
+#
 # ---------- lambda functions ----------
 # lambda функция используется, когда ненадолго требуется безымянная функция, имеет лишь одно выражение
 
@@ -128,11 +138,12 @@
 # import calendar  # импорт модуля calendar
 # print(calendar.weekheader(3))  # по 3 буквы: Mon Tue Wed Thu Fri Sat Sun
 # - Метод weekheader(n) - для получения заголовка с днями недели, по (n) букв
-#
+
+# ----- reduce() - функция высшего порядка
 # import functools  # импорт модуля functools
 # res = functools.reduce(lambda x, y: x - y, [7, 1, 4])
+# reduce последовательно применяет функцию-аргумент к элементам списка, возвращает единичное значение
 # print(res)  # из первого аргумента выитаются остальные: 2
-# - функция reduce() последовательно применяет функцию-аргумент к элементам списка, возвращает единичное значение
 #
 # --- Другой способ, через from:
 # from import reduce  # из модуля functools импорт функции reduce
@@ -159,7 +170,7 @@
 # Однако можно изменить имя идентификатора из модуля на какое угодно:
 # from math import pi as P
 #
-# ----- Создадим свой модуль
+# ----- Создадим свой модуль -----
 # Создаем в папке проекта (AlegCh) файл my_file с функцией:
 # def sum_it(x, y):
 #     return x + y
@@ -177,28 +188,42 @@
 #
 #
 # ---------- Напишем простые тесты к нашим функциям
-from my_file import *  # импортировать все функции: import *
+# from my_file import *  # импортировать все функции: import *
+#
+#
+# def tests():
+#     assert sum_it(5, 8) == 13, f'Wrong number, actual result is {sum_it(5, 8)}'
+#     assert prod(10, 6) == 60, f'Wrong number, actual result is {prod(10, 6)}'
+#     assert div(10, 0) == "Can't divide by zero!"
+#
+#
+# tests()
+#
+# ----- kwargs - именованные аргументы keyword args
+# def sum_it(**kwargs):  # две ** значат, что в функцию будем принимать ИМЕНОВАННЫЕ аргументы, любое количество
+#     result = 0
+#     for i in kwargs.values():
+#         result += i
+#     return result
+#
+#
+# print(sum_it(num1=4, num2=5, num3=10))  # 19
 
-
-def tests():
-    assert sum_it(5, 8) == 13, f'Wrong number, actual result is {sum_it(5, 8)}'
-    assert prod(10, 6) == 60, f'Wrong number, actual result is {prod(10, 6)}'
-    assert div(10, 0) == "Can't divide by zero"
-
-
-print(tests())
-# ///// 56:10
-# def sum_it(**kwargs):
-#     print(type(kwargs))
+# --- но проще в одну строку:
+# def sum_it(**kwargs):  # когда две ** то в функцию передаются переменные и ИМЕНОВАННЫЕ аргументы
+#     print(type(kwargs))  # <class 'dict'>
 #     return sum(kwargs.values())
 #
-# print(sum_it(num1=4, num2=5, num3=10))
 #
-# def sum_i(*args):
-#     print(type(args))
+# print(sum_it(num1=4, num2=5, num3=10))  # 19
+
+# def sum_i(*args):  # когда одна * то передаются только ПОЗИЦИОННЫЕ аргументы
+#     print(type(args))  # <class 'tuple'>
 #     return sum(args)
-# print(sum_i(5, 6, 10))
+# print(sum_i(5, 6, 10))  # 21
 #
+# ----- map - функция высшего порядка
 # list_2 = [1, 2, 3, 4, 5]
-# print(list(map(lambda x: x*x, list_2)))
-# print([x*x for x in list_2])
+# print(list(map(lambda x: x * x, list_2)))  # map к КАЖДОМУ элементу применяет функцию-аргумент
+# # можно методом list comprehension, но он медленнее:
+# print([x * x for x in list_2])  # [1, 4, 9, 16, 25]
