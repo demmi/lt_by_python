@@ -42,6 +42,7 @@
 # print(f'Globals: {globals()}')  # Globals: {тут покажет длинную строку - все о программе}
 
 # ---------- ВСТРОЕННЫЕ МОДУЛИ (BUILT-IN MODULES) ----------
+# --- математический модуль
 # import math
 # arr = [1, 2, 3, 4, 5, 10, 25]
 # new_arr = math.prod(arr)  # prod перемножает все значения
@@ -57,6 +58,7 @@
 # new_arr = m.prod(arr)
 # print(new_arr)
 
+# --- модуль даты и времени
 # import datetime
 # birth_year = 1980
 # current_date = datetime.date.today()
@@ -64,17 +66,17 @@
 # print(current_date)  # 2022-10-01 вывели сегодняшнюю дату
 # print(current_age)
 
-# print(datetime.date.today().year)  # сегодня 2022 год
-# print(datetime.date.today().month)  # сегодня 10 месяц
-# print(datetime.date.today().day)  # сегодня первое число
+# print(datetime.date.today().year)  # 2022 - год
+# print(datetime.date.today().month)  # 10 - месяц
+# print(datetime.date.today().day)  # 1 - сегодня первое число
 #
 # ---------- lambda functions ----------
 # lambda функция используется, когда ненадолго требуется безымянная функция, имеет лишь одно выражение
 
 # print((lambda x, y: x * y)(5, 8))  # 40 - функция в 1 строчку и тут же передали аргументы
 
-# mult = lambda x, y: x * y  # 40 - lambda функцию можно задать через переменную
-# print(mult(5, 8))  # и вывести результат через переменную
+# mult = lambda x, y: x * y  # - lambda функцию можно задать через переменную
+# print(mult(5, 8))  # и вывести результат через переменную: 40
 #
 #
 # print('------Sum list_1 With function and for loop----------')
@@ -90,6 +92,8 @@
 # print(filter_and_sum_nums(list_1))  # сумма чисел в списке 213
 #
 # print('--------Sum list_1 with lambda and filter----------')
+# ----- filter функция высшего порядка -----
+# filter возвращает итератор, если элементы фильтруются с помощью функции-аргумента
 # list_1 = ['Hi', 'ananas', 2, None, 75, 'pizza', 36, 100]
 # print(sum((filter(lambda x: isinstance(x, int), list_1))))  # сумма чисел в списке 213 - в 1 строку
 #
@@ -129,7 +133,7 @@
 # print(list(filter(lambda x: 'a' in x, filtered)))
 # print(list(filter(lambda x: 'a' not in x, filtered)))  # ['Hi'] - слова, где нет 'a'
 #
-# --- но тут лучше методом list comprehension ---
+# --- или методом list comprehension ---
 # print([word for word in list_1 if type(word) == str if 'a' in word])  # ['ananas', 'pizza']
 #
 #
@@ -139,10 +143,10 @@
 # print(calendar.weekheader(3))  # по 3 буквы: Mon Tue Wed Thu Fri Sat Sun
 # - Метод weekheader(n) - для получения заголовка с днями недели, по (n) букв
 
-# ----- reduce() - функция высшего порядка
+# ----- reduce() - функция высшего порядка -----
+# reduce последовательно применяет функцию-аргумент к элементам списка, возвращает единичное значение
 # import functools  # импорт модуля functools
 # res = functools.reduce(lambda x, y: x - y, [7, 1, 4])
-# reduce последовательно применяет функцию-аргумент к элементам списка, возвращает единичное значение
 # print(res)  # из первого аргумента выитаются остальные: 2
 #
 # --- Другой способ, через from:
@@ -221,9 +225,11 @@
 #     print(type(args))  # <class 'tuple'>
 #     return sum(args)
 # print(sum_i(5, 6, 10))  # 21
-#
-# ----- map - функция высшего порядка
+
+# ----- map - функция высшего порядка -----
+# map применяет функцию-аргумент отдельно к КАЖДОМУ элементу
 # list_2 = [1, 2, 3, 4, 5]
-# print(list(map(lambda x: x * x, list_2)))  # map к КАЖДОМУ элементу применяет функцию-аргумент
-# # можно методом list comprehension, но он медленнее:
+# print(list(map(lambda x: x * x, list_2)))
+
+# можно методом list comprehension, но он медленнее, чем lambda:
 # print([x * x for x in list_2])  # [1, 4, 9, 16, 25]
