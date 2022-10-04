@@ -150,7 +150,7 @@
 # print(res)  # из первого аргумента выитаются остальные: 2
 #
 # --- Другой способ, через from:
-# from import reduce  # из модуля functools импорт функции reduce
+# from functools import reduce  # из модуля functools импорт функции reduce
 # res = reduce(lambda x, y: x + y, [1, 5, 8, 11, 13])  # 38 - сумма
 # print(res)
 #
