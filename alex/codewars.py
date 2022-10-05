@@ -1,6 +1,7 @@
 import os
 import math
 
+
 # def user_friendly_size(file_size):
 #     sizes = {40: 'TB', 30: 'GB', 20: 'MB', 10: 'kB', 0: 'B'}
 #     if isinstance(file_size, str):
@@ -42,3 +43,94 @@ def counting_valleys(s):
         if level == 0 and path == "U":
             valley += 1
     return valley
+
+
+# a = 234042163/(2**24)
+# print(a)
+# print("%.2f" % a)
+# print(round(a, 2))
+# print("%.2f" % round(a, 2))
+# print("{:.2f}".format(a))
+# print("{:.2f}".format(round(a, 2)))
+# print("{:.15f}".format(round(a, 2)))
+
+
+# for i in range(1,13,1):
+#     print(f'{i} {int(i/3) + 1}')
+#     # print(math.ceil(i/3))
+#
+# def filterLucky(mylist):
+#     return list(filter(lambda x: '7' in str(x), mylist))
+#
+# print(filterLucky([1,2,3,4,5,6,7,68,69,70,15,17]))
+
+
+def trickyDoubles(num: int) -> int:
+    d = int(len(str(num)) / 2)
+    if str(num)[:d] == str(num)[-d:]:
+        return (num)
+    else:
+        return num * 2
+
+
+print(trickyDoubles(7727))
+
+
+# from sympy import isprime
+# def sexy_primes(a, b):
+#     if isprime(a) and isprime(b) and abs(a-b) == 6:
+#         return True
+#     else:
+#         return False
+
+
+def double_check(strng):
+    for i in range(len(strng) - 1):
+        if strng[i].lower() == strng[i + 1].lower():
+            return True
+    return False
+
+
+print(double_check('AabBcC'))
+
+
+def next_item(xs, item):
+    try:
+        x = list(xs)
+        return x.pop(x.index(item) + 1)
+    except:
+        return None
+
+
+print(next_item([1, 2, 3, 4, 5, 6, 7], 3))
+print(next_item(['Joe', 'Bob', 'Sally'], 'Bob'))
+
+
+for num in range(1, 101):
+    print('FizzBuzz' if (not num % 5 and not num % 3) else 'Fizz' if not num % 3 else 'Buzz' if not num % 5 else str(num))
+
+
+def next_item(xs, item):
+    try:
+        x = list(xs)
+        return x.pop(x.index(item) + 1)
+    except:
+        return None
+
+
+def next_item2(xs, item):
+    m = False
+    for i in xs:
+        if m:
+            return i
+        if i == item:
+            m = True
+
+
+s = "aabacbaa"
+replaced = re.sub('b', 'a', s)
+print(replaced)
+replaced = ''
+for i in s:
+    replaced += {'a': 'b', 'b': 'a', 'c': 'c'}[i]
+print(replaced)
