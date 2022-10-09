@@ -29,6 +29,7 @@ print(employee1.walk())  # I can walk!
 class Developer(Employee):  # Создаем подкласс Developer в классе Employee
 
 
-dev1 =
+dev1 = Developer
+print(dev1.walk())
 
-///// 26:50
+///// 26:55
