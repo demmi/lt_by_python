@@ -12,6 +12,9 @@ def big_num_sum2(number: int) -> int:
         number = reduce(lambda a, b: int(a) + int(b), str(number))
     return number
 
+# def big_num_sum2(number: int) -> int:
+#     return number % 9 if number % 9 else 9
+
 
 if __name__ == "__main__":
     big_num = int(input("Input any number: "))
