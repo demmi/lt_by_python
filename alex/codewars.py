@@ -1,6 +1,6 @@
 import os
 import math
-
+import re
 
 # def user_friendly_size(file_size):
 #     sizes = {40: 'TB', 30: 'GB', 20: 'MB', 10: 'kB', 0: 'B'}
@@ -68,7 +68,7 @@ def counting_valleys(s):
 def trickyDoubles(num: int) -> int:
     d = int(len(str(num)) / 2)
     if str(num)[:d] == str(num)[-d:]:
-        return (num)
+        return num
     else:
         return num * 2
 
@@ -91,7 +91,7 @@ def double_check(strng):
     return False
 
 
-print(double_check('AabBcC'))
+print(double_check("AabBcC"))
 
 
 def next_item(xs, item):
@@ -103,11 +103,19 @@ def next_item(xs, item):
 
 
 print(next_item([1, 2, 3, 4, 5, 6, 7], 3))
-print(next_item(['Joe', 'Bob', 'Sally'], 'Bob'))
+print(next_item(["Joe", "Bob", "Sally"], "Bob"))
 
 
 for num in range(1, 101):
-    print('FizzBuzz' if (not num % 5 and not num % 3) else 'Fizz' if not num % 3 else 'Buzz' if not num % 5 else str(num))
+    print(
+        "FizzBuzz"
+        if (not num % 5 and not num % 3)
+        else "Fizz"
+        if not num % 3
+        else "Buzz"
+        if not num % 5
+        else str(num)
+    )
 
 
 def next_item(xs, item):
@@ -128,9 +136,22 @@ def next_item2(xs, item):
 
 
 s = "aabacbaa"
-replaced = re.sub('b', 'a', s)
-print(replaced)
-replaced = ''
+replaced = ""
 for i in s:
-    replaced += {'a': 'b', 'b': 'a', 'c': 'c'}[i]
+    replaced += {"a": "b", "b": "a", "c": "c"}[i]
 print(replaced)
+
+
+# [print(['Fizz', '', ''][i % 3] + ['Buzz', '', '', '', ''][i % 5] or i) for i in range(1, 101)]
+
+
+def create_phone_number(n):
+    n = "".join(map(str, n))
+    return "(%s) %s-%s" % (n[:3], n[3:6], n[6:])
+
+
+print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+
+print({True: "1", 1: "one"})
+
+print({1, 1.0, True})

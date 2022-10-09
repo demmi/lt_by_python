@@ -2,7 +2,7 @@ import pytest
 from alex.homework4_1 import *
 from random import sample
 
-test_cases = set(sample(range(12345678, 123456789), 20))
+test_cases = set(sample(range(12345, 1234567890), 200))
 
 
 @pytest.mark.parametrize("num", test_cases)
