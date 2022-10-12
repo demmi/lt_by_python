@@ -15,6 +15,7 @@ def print_kwargs(**kwargs):
     # [print(f'{k}: {v}') for k, v in kwargs.items()]
     result = ''
     for k, v in kwargs.items():
+        
         result += f'{k}: {v}\n'
     return result
 
