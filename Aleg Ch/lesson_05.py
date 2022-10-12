@@ -1,9 +1,9 @@
 # OOP. GIT. GITHUB
 # ----- Создаем класс Employee с атрибутами (параметрами) name, surname
 # class Employee:
-#     def __init__(self, name, surname):
-#         self.name = name
-#         self.surname = surname
+#     def __init__(self, name, surname):  # __init__ это конструктор
+#         self.name = name  # задаем атрибут name
+#         self.surname = surname  # задаем атрибут surname
 #
 #
 # employee1 = Employee('Alex', 'Smith')  # Создаем объект класса Employee с конкретными аргументами
@@ -14,22 +14,99 @@
 # print(employee2.name)  # Nika
 # print(employee2.surname)  # Anders
 #
-# ----- Принцип наследования
-class Employee:
+# ----- Принцип наследования -----
+# class Employee:  # Создаем класс Employee
+#     def __init__(self, name, surname):
+#         self.name = name  # задаем атрибуты
+#         self.surname = surname
+#
+#     def walk(self):  # создаем метод (функцию, действие) класса
+#         return 'I can walk!'
+#
+#
+# employee1 = Employee('Alex', 'Smith')  # создаем employee1, объект класса Employee
+# print(employee1.name)  # Alex
+# print(employee1.walk())  # I can walk! Он уже имеет walk(), метод класса Employee
+#
+#
+# class Developer(Employee):  # создаем подкласс Developer в классе Employee
+#     def __init__(self, name, surname, language):  # вводим в подкласс свой атрибут, language
+#         super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+#         self.language = language
+#
+#     def coding(self):  # даем подклассу свой метод, coding
+#         return 'I am coding!'
+#
+#
+# class Tester(Employee):
+#     def __init__(self, name, surname, language, test_framework):  # вводим свой атрибут, test_framework
+#         super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+#         self.language = language
+#         self.test_framework = test_framework
+#
+#     def testing(self):
+#         return 'I can write tests!'
+#
+#
+# dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
+# print(dev1.name)  # Max
+# print(dev1.language)  # Python
+# print(dev1.walk())  # I can walk! - объект подкласса унаследовал метод родительского класса
+# print(dev1.coding())  # I am coding!
+# print(type(dev1))  # <class '__main__.Developer'>
+#
+# tester1 = Tester('Anna', 'Fisher', 'Java', 'TestNG')
+# print(tester1.name, tester1.surname)  # Anna Fisher
+# print(tester1.language)  # Java
+# print(tester1.test_framework)  # TestNG
+# print(tester1.walk())  # I can walk!
+# print(tester1.testing())  # I can write tests!
+#
+# print(isinstance(dev1, Developer))  # True, dev1 есть объект подкласса Developer
+# print(issubclass(Developer, Employee))  # True, Developer есть подкласс класса Employee
+#
+# ----- Полиморфизм -----
+# Полиморфизм это разное поведение метода в разных классах
+class Employee:  # Создаем класс Employee
     def __init__(self, name, surname):
-        self.name = name
+        self.name = name  # задаем атрибуты
         self.surname = surname
 
-    def walk(self):  # Создаем метод (функцию, действие) класса
-        return 'I can walk!'
-
-employee1 = Employee('Alex', 'Smith')
-print(employee1.walk())  # I can walk!
-
-class Developer(Employee):  # Создаем подкласс Developer в классе Employee
+    def work(self):  # создаем метод (функцию, действие) класса
+        return 'I am working!'
 
 
-dev1 = Developer
-print(dev1.walk())
+class Developer(Employee):  # создаем подкласс Developer в классе Employee
+    def __init__(self, name, surname, language):  # вводим в подкласс свой атрибут, language
+        super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+        self.language = language
 
-///// 26:55
+    def work(self):  # даем подклассу свой метод, coding
+        return 'I am coding!'
+
+
+class Tester(Employee):
+    def __init__(self, name, surname, language, test_framework):  # вводим свой атрибут, test_framework
+        super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+        self.language = language
+        self.test_framework = test_framework
+
+    def work(self):
+        return 'I am testing!'
+
+
+# --- у объектов один и тот же метод work, но действия заданы разные:
+
+employee1 = Employee('Alex', 'Smith')  # создаем employee1, объект класса Employee
+print(employee1.name)  # Alex
+print(employee1.work())  # I am working!
+
+dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
+print(dev1.name)  # Max
+print(dev1.work())  # I am coding!
+
+tester1 = Tester('Anna', 'Fisher', 'Java', 'TestNG')
+print(tester1.name, tester1.surname)  # Anna Fisher
+print(tester1.work())  # I am testing!
+
+# ///// 56:56
