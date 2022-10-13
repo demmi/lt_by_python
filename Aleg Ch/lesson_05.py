@@ -67,46 +67,84 @@
 #
 # ----- Полиморфизм -----
 # Полиморфизм это разное поведение метода в разных классах
-class Employee:  # Создаем класс Employee
+# class Employee:  # Создаем класс Employee
+#     def __init__(self, name, surname):
+#         self.name = name  # задаем атрибуты
+#         self.surname = surname
+#
+#     def work(self):  # создаем метод (функцию, действие) класса
+#         return 'I am working!'
+#
+#
+# class Developer(Employee):  # создаем подкласс Developer в классе Employee
+#     def __init__(self, name, surname, language):  # вводим в подкласс свой атрибут, language
+#         super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+#         self.language = language
+#
+#     def work(self):
+#         return 'I am coding!'  # даем подклассу свою реализацию общего метода work
+#
+#     def get_language(self):
+#         return f'My language is {self.language}'
+#
+#
+# class Tester(Employee):
+#     def __init__(self, name, surname, language, test_framework):  # вводим свой атрибут, test_framework
+#         super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+#         self.language = language
+#         self.test_framework = test_framework
+#
+#     def work(self):
+#         return 'I am testing!'
+#
+#
+# # --- у объектов один и тот же метод work, но действия заданы разные:
+#
+# employee1 = Employee('Alex', 'Smith')  # создаем employee1, объект класса Employee
+# print(employee1.name)  # Alex
+# print(employee1.work())  # I am working!
+#
+# dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
+# print(dev1.name)  # Max
+# print(dev1.work())  # I am coding!
+# print(dev1.get_language())  # My language is Python
+#
+# tester1 = Tester('Anna', 'Fisher', 'Java', 'TestNG')
+# print(tester1.name, tester1.surname)  # Anna Fisher
+# print(tester1.language)  # Java
+# print(tester1.work())  # I am testing!
+#
+# ----- Инкапсуляция -----
+# Механизм контроля доступа к данным:
+# 1. Public (self.language = language)
+# 2. Protected (self._language = language) - с одним нижним подчеркиванием
+# 3. Private (self.__language = language) - с двумя нижними подчеркиваниями
+class Employee:
     def __init__(self, name, surname):
         self.name = name  # задаем атрибуты
         self.surname = surname
 
-    def work(self):  # создаем метод (функцию, действие) класса
+    def work(self):  # создаем метод класса
         return 'I am working!'
 
 
-class Developer(Employee):  # создаем подкласс Developer в классе Employee
-    def __init__(self, name, surname, language):  # вводим в подкласс свой атрибут, language
-        super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
-        self.language = language
-
-    def work(self):  # даем подклассу свой метод, coding
-        return 'I am coding!'
-
-
-class Tester(Employee):
-    def __init__(self, name, surname, language, test_framework):  # вводим свой атрибут, test_framework
-        super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
-        self.language = language
-        self.test_framework = test_framework
+class Developer(Employee):  # создаем подкласс Developer
+    def __init__(self, name, surname, language):
+        super().__init__(name, surname)
+        self.__language = language  # делаем доступ Private - с двумя нижними подчеркиваниями
 
     def work(self):
-        return 'I am testing!'
+        return 'I am coding!'  # даем подклассу свою реализацию общего метода work
 
+    def get_language(self):
+        return f'My language is {self.__language}'
 
-# --- у объектов один и тот же метод work, но действия заданы разные:
-
-employee1 = Employee('Alex', 'Smith')  # создаем employee1, объект класса Employee
-print(employee1.name)  # Alex
-print(employee1.work())  # I am working!
 
 dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
 print(dev1.name)  # Max
 print(dev1.work())  # I am coding!
+print(dev1.get_language())  # My language is Python
 
-tester1 = Tester('Anna', 'Fisher', 'Java', 'TestNG')
-print(tester1.name, tester1.surname)  # Anna Fisher
-print(tester1.work())  # I am testing!
 
-# ///// 56:56
+
+# ///// 1:01:47
