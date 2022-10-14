@@ -121,17 +121,17 @@
 # 3. Private (self.__language = language) - с двумя нижними подчеркиваниями
 class Employee:
     def __init__(self, name, surname):
-        self.name = name  # задаем атрибуты
+        self.name = name
         self.surname = surname
 
-    def work(self):  # создаем метод класса
+    def work(self):
         return 'I am working!'
 
 
-class Developer(Employee):  # создаем подкласс Developer
+class Developer(Employee):
     def __init__(self, name, surname, language):
         super().__init__(name, surname)
-        self.__language = language  # делаем доступ Private - с двумя нижними подчеркиваниями
+        self.__language = language  # двумя нижними подчеркиваниями делаем доступ Private
 
     def work(self):
         return 'I am coding!'  # даем подклассу свою реализацию общего метода work
@@ -145,6 +145,8 @@ print(dev1.name)  # Max
 print(dev1.work())  # I am coding!
 print(dev1.get_language())  # My language is Python
 
+# Из-за приватного режима доступа извне к атрибуту language не будет:
+print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
 
 
-# ///// 1:01:47
+# ///// 1:03:50
