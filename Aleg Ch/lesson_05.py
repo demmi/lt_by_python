@@ -131,22 +131,31 @@ class Employee:
 class Developer(Employee):
     def __init__(self, name, surname, language):
         super().__init__(name, surname)
-        self.__language = language  # двумя нижними подчеркиваниями делаем доступ Private
-
-    def work(self):
-        return 'I am coding!'  # даем подклассу свою реализацию общего метода work
+        self.__language = language  # двумя нижними подчеркиваниями доступ к атрибуту делаем Private
 
     def get_language(self):
         return f'My language is {self.__language}'
 
+    def set_language(self, newlang):  # чтоб самому изменить защищенный атрибут задаем метод set
+        self.__language = newlang
+
 
 dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
 print(dev1.name)  # Max
-print(dev1.work())  # I am coding!
 print(dev1.get_language())  # My language is Python
 
-# Из-за приватного режима доступа извне к атрибуту language не будет:
-print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
+# --- Из-за приватного режима доступа извне к атрибуту language не будет:
+# print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
+# print(dev1.__language)  # AttributeError: 'Developer' object has no attribute '__language'.
 
+# --- Меняем атрибут language с помощью метода set:
+dev1.set_language('Java')  # даем новое значение Java атрибуту language
+print(dev1.get_language())  # My language is Java
+# --- Выведем ля проверки атрибуты объекта dev1:
+print(dev1.__dict__)  # {'name': 'Max', 'surname': 'Frolov', '_Developer__language': 'Java'}
 
-# ///// 1:03:50
+dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объект dev2
+dev2.premium = 200  # задаем атрибут только для dev2
+print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
+
+# ///// 1:27:00
