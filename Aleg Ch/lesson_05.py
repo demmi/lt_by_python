@@ -115,47 +115,56 @@
 # print(tester1.work())  # I am testing!
 #
 # ----- Инкапсуляция -----
-# Механизм контроля доступа к данным:
+# Уровни доступа к данным:
 # 1. Public (self.language = language)
 # 2. Protected (self._language = language) - с одним нижним подчеркиванием
 # 3. Private (self.__language = language) - с двумя нижними подчеркиваниями
-class Employee:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
+# class Employee:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     def work(self):
+#         return 'I am working!'
+#
+#
+# class Developer(Employee):
+#     def __init__(self, name, surname, language):
+#         super().__init__(name, surname)
+#         self.__language = language  # двумя нижними подчеркиваниями доступ к атрибуту делаем Private
+#
+#     def get_language(self):
+#         return f'My language is {self.__language}'
+#
+#     def set_language(self, newlang):  # чтоб самому изменить защищенный атрибут задаем метод set
+#         self.__language = newlang
+#
+#
+# dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
+# print(dev1.name)  # Max
+# print(dev1.get_language())  # My language is Python
+#
+# # --- Из-за приватного режима доступа извне к атрибуту language не будет:
+# # print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
+# # print(dev1.__language)  # AttributeError: 'Developer' object has no attribute '__language'.
+#
+# # --- Меняем атрибут language с помощью метода set:
+# dev1.set_language('Java')  # даем новое значение Java атрибуту language
+# print(dev1.get_language())  # My language is Java
+# # --- Выведем ля проверки атрибуты объекта dev1:
+# print(dev1.__dict__)  # {'name': 'Max', 'surname': 'Frolov', '_Developer__language': 'Java'}
+#
+# dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объект dev2
+# dev2.premium = 200  # задаем атрибут только для dev2
+# print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
 
-    def work(self):
-        return 'I am working!'
+# ---------- Система контроля версий ----------
+# GIT - консольная утилита для ведения истории изменения файлов.
+# 1) открываем в PyCharm файл git_practice, который нужно добавить в репозиторий
+# 2) во вкладке Terminal запускаем команду git init, чтобы сделать git репозиторий в папке, где лежит файл
+# 3) запускаем git status и видим в репозитории служебную папку .idea/, она тут не нужна
+# 4) создаем новый файл .gitignore и в него записываем файлы, которфе нужно игнорировать: .idea/
+# 5) проверяем через git status
+#
 
-
-class Developer(Employee):
-    def __init__(self, name, surname, language):
-        super().__init__(name, surname)
-        self.__language = language  # двумя нижними подчеркиваниями доступ к атрибуту делаем Private
-
-    def get_language(self):
-        return f'My language is {self.__language}'
-
-    def set_language(self, newlang):  # чтоб самому изменить защищенный атрибут задаем метод set
-        self.__language = newlang
-
-
-dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
-print(dev1.name)  # Max
-print(dev1.get_language())  # My language is Python
-
-# --- Из-за приватного режима доступа извне к атрибуту language не будет:
-# print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
-# print(dev1.__language)  # AttributeError: 'Developer' object has no attribute '__language'.
-
-# --- Меняем атрибут language с помощью метода set:
-dev1.set_language('Java')  # даем новое значение Java атрибуту language
-print(dev1.get_language())  # My language is Java
-# --- Выведем ля проверки атрибуты объекта dev1:
-print(dev1.__dict__)  # {'name': 'Max', 'surname': 'Frolov', '_Developer__language': 'Java'}
-
-dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объект dev2
-dev2.premium = 200  # задаем атрибут только для dev2
-print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
-
-# ///// 1:27:00
+# ///// 1:33:45
