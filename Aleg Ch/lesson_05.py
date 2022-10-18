@@ -115,47 +115,89 @@
 # print(tester1.work())  # I am testing!
 #
 # ----- Инкапсуляция -----
-# Механизм контроля доступа к данным:
+# Уровни доступа к данным:
 # 1. Public (self.language = language)
 # 2. Protected (self._language = language) - с одним нижним подчеркиванием
 # 3. Private (self.__language = language) - с двумя нижними подчеркиваниями
-class Employee:
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
+# class Employee:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     def work(self):
+#         return 'I am working!'
+#
+#
+# class Developer(Employee):
+#     def __init__(self, name, surname, language):
+#         super().__init__(name, surname)
+#         self.__language = language  # двумя нижними подчеркиваниями доступ к атрибуту делаем Private
+#
+#     def get_language(self):
+#         return f'My language is {self.__language}'
+#
+#     def set_language(self, newlang):  # чтоб самому изменить защищенный атрибут задаем метод set
+#         self.__language = newlang
+#
+#
+# dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
+# print(dev1.name)  # Max
+# print(dev1.get_language())  # My language is Python
+#
+# # --- Из-за приватного режима доступа извне к атрибуту language не будет:
+# # print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
+# # print(dev1.__language)  # AttributeError: 'Developer' object has no attribute '__language'.
+#
+# # --- Меняем атрибут language с помощью метода set:
+# dev1.set_language('Java')  # даем новое значение Java атрибуту language
+# print(dev1.get_language())  # My language is Java
+# # --- Выведем ля проверки атрибуты объекта dev1:
+# print(dev1.__dict__)  # {'name': 'Max', 'surname': 'Frolov', '_Developer__language': 'Java'}
+#
+# dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объект dev2
+# dev2.premium = 200  # задаем атрибут только для dev2
+# print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
 
-    def work(self):
-        return 'I am working!'
+# ---------- Система контроля версий ----------
+# GIT - консольная утилита для ведения истории изменения файлов.
+# 1) открываем в PyCharm файл git_practice, который нужно добавить в репозиторий
+# 2) git init - во вкладке Terminal запускаем команду, чтобы создать репозиторий в папке, где лежит файл
+# 3) запускаем git status и видим в репозитории служебную папку .idea/, она тут не нужна
+# 4) создаем файл: .gitignore и в него записываем файлы, которые нужно игнорировать: .idea/
+# 5) git status - проверяем статус в Terminal, видим измененные файлы красного цвета
+# 6) Changes not staged for commit - изменения, не подготовлены для фиксации
+# 7) git add . для отслеживания (индексирования) всех (.) файлов в папке или git add <file> для одного файла
+# или git restore <file>, чтобы отменить изменения в рабочем каталоге
+# 8) git status проверяем статус в Terminal, видим индексированные файлы зеленого цвета
+# 9) git commit -m 'message' помещение всех изменений в репозиторий (-m это флаг для сообщения при фиксации)
+# 10) git log - смотрим лог по всем коммитам: автор, дата, сообщение, HEAD -> указатель на последний коммит,
+# master это основная ветка репозитория (HEAD -> master)
+# 11) git branch test1 - создаем параллельную версию репозитория, branch - ветка с именем test1
+# 12) git checkout test1 - переходим на ветку test1 (- Switched to branch 'test1')
+# 13) в ветке test1 добавляем новую функцию (subtract)
+# 14) git add git_practice.py индексируем изменения в файле git_practice.py
+# 15) git commit -m 'add subtract' помещаем измиенения в репозиторий, видим HEAD -> test1
+# 16) git checkout master перейдем в master, обновим файл и увидим, что в нем нет добавленной функции subtract
+# 17) git branch test2 - создаем еще одну ветку test2
+# 18) git checkout test2 - переходим на ветку test2
+# 19) в ветке test2 добавляем функцию (remain), git add ., git commit -m 'added remain', git log, видим HEAD -> test2
+# 20) git branch - видим все ветки и где мы находимся (*):
+# * master
+#   test1
+#   test2
+# 21) git merge test1 объединим master, где мы находимся, и ветку test1:
+# git_practice.py | 4 ++++
+# 1 file changed, 4 insertions(+)
+# 22) git merge test2 объединим master и ветку test2
+# 23) CONFLICT (content): Merge conflict in git_practice.py
+# Automatic merge failed; fix conflicts and then commit the result.
+# 24) git checkout test2
+# error: you need to resolve your current index first (вам нужно разобраться с текущим индексом сначала)
+# git_practice.py: needs merge
+# 25) git merge --abort (это отмена изменений test2)
+# 26) git checkout master  переходим в мастер
+# 27) вручную удаляем появившиеся метки: <<<<<<< HEAD, =======, >>>>>>> test2
+# 28) git add .     git merge --continue (продолжить слияние)      git commit -m 'merging'
+#
+# ///// 2:17:00
 
-
-class Developer(Employee):
-    def __init__(self, name, surname, language):
-        super().__init__(name, surname)
-        self.__language = language  # двумя нижними подчеркиваниями доступ к атрибуту делаем Private
-
-    def get_language(self):
-        return f'My language is {self.__language}'
-
-    def set_language(self, newlang):  # чтоб самому изменить защищенный атрибут задаем метод set
-        self.__language = newlang
-
-
-dev1 = Developer('Max', 'Frolov', 'Python')  # Создаем dev1, объект подкласса Developer
-print(dev1.name)  # Max
-print(dev1.get_language())  # My language is Python
-
-# --- Из-за приватного режима доступа извне к атрибуту language не будет:
-# print(dev1.language)  # AttributeError: 'Developer' object has no attribute 'language'
-# print(dev1.__language)  # AttributeError: 'Developer' object has no attribute '__language'.
-
-# --- Меняем атрибут language с помощью метода set:
-dev1.set_language('Java')  # даем новое значение Java атрибуту language
-print(dev1.get_language())  # My language is Java
-# --- Выведем ля проверки атрибуты объекта dev1:
-print(dev1.__dict__)  # {'name': 'Max', 'surname': 'Frolov', '_Developer__language': 'Java'}
-
-dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объект dev2
-dev2.premium = 200  # задаем атрибут только для dev2
-print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
-
-# ///// 1:30:37
