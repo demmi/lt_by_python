@@ -158,4 +158,4 @@ dev2 = Developer('Alice', 'Brown', 'Go')  # создаем новый объек
 dev2.premium = 200  # задаем атрибут только для dev2
 print(dev2.__dict__)  # {'name': 'Alice', 'surname': 'Brown', '_Developer__language': 'Go', 'premium': 200}
 
-# ///// 1:27:00
+# ///// 1:30:37
