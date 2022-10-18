@@ -197,7 +197,11 @@
 # 25) git merge --abort (это отмена изменений test2)
 # 26) git checkout master  переходим в мастер
 # 27) вручную удаляем появившиеся метки: <<<<<<< HEAD, =======, >>>>>>> test2
-# 28) git add .     git merge --continue (продолжить слияние)      git commit -m 'merging'
+# 28) git add .
+# 29) git merge --continue  продолжить слияние
+# 30) git commit -m 'merging'  помещаем измиенения в репозиторий
+#
+# ---------- GITHUB ----------
 #
 # ///// 2:17:00
 
