@@ -161,16 +161,43 @@
 # ---------- Система контроля версий ----------
 # GIT - консольная утилита для ведения истории изменения файлов.
 # 1) открываем в PyCharm файл git_practice, который нужно добавить в репозиторий
-# 2) во вкладке Terminal запускаем команду git init, чтобы сделать git репозиторий в папке, где лежит файл
+# 2) git init - во вкладке Terminal запускаем команду, чтобы создать репозиторий в папке, где лежит файл
 # 3) запускаем git status и видим в репозитории служебную папку .idea/, она тут не нужна
 # 4) создаем файл: .gitignore и в него записываем файлы, которые нужно игнорировать: .idea/
-# 5) проверяем в Terminal командой git status - видим измененные файлы красного цвета
-# 6) Changes not staged for commit - Изменения, не подготовлены для фиксации
-# 7) git add . - добавляем для отслеживания (индексирования) все файлы в папке или git add <file> для одного файла
+# 5) git status - проверяем статус в Terminal, видим измененные файлы красного цвета
+# 6) Changes not staged for commit - изменения, не подготовлены для фиксации
+# 7) git add . для отслеживания (индексирования) всех (.) файлов в папке или git add <file> для одного файла
 # или git restore <file>, чтобы отменить изменения в рабочем каталоге
-# 8) проверяем в Terminal командой git status - видим индексированные файлы зеленого цвета
-# 9) отслеживаемые файлы нужно зафиксировать: git commit -m 'message' (-m это флаг для сообщения при фиксации)
-# 10) смотрим лог по этому коммиту: git log - автор, дата, сообщение,
+# 8) git status проверяем статус в Terminal, видим индексированные файлы зеленого цвета
+# 9) git commit -m 'message' помещение всех изменений в репозиторий (-m это флаг для сообщения при фиксации)
+# 10) git log - смотрим лог по всем коммитам: автор, дата, сообщение, HEAD -> указатель на последний коммит,
+# master это основная ветка репозитория (HEAD -> master)
+# 11) git branch test1 - создаем параллельную версию репозитория, branch - ветка с именем test1
+# 12) git checkout test1 - переходим на ветку test1 (- Switched to branch 'test1')
+# 13) в ветке test1 добавляем новую функцию (subtract)
+# 14) git add git_practice.py индексируем изменения в файле git_practice.py
+# 15) git commit -m 'add subtract' помещаем измиенения в репозиторий, видим HEAD -> test1
+# 16) git checkout master перейдем в master, обновим файл и увидим, что в нем нет добавленной функции subtract
+# 17) git branch test2 - создаем еще одну ветку test2
+# 18) git checkout test2 - переходим на ветку test2
+# 19) в ветке test2 добавляем функцию (remain), git add ., git commit -m 'added remain', git log, видим HEAD -> test2
+# 20) git branch - видим все ветки и где мы находимся (*):
+# * master
+#   test1
+#   test2
+# 21) git merge test1 объединим master, где мы находимся, и ветку test1:
+# git_practice.py | 4 ++++
+# 1 file changed, 4 insertions(+)
+# 22) git merge test2 объединим master и ветку test2
+# 23) CONFLICT (content): Merge conflict in git_practice.py
+# Automatic merge failed; fix conflicts and then commit the result.
+# 24) git checkout test2
+# error: you need to resolve your current index first (вам нужно разобраться с текущим индексом сначала)
+# git_practice.py: needs merge
+# 25) git merge --abort (это отмена изменений test2)
+# 26) git checkout master  переходим в мастер
+# 27) вручную удаляем появившиеся метки: <<<<<<< HEAD, =======, >>>>>>> test2
+# 28) git add .     git merge --continue (продолжить слияние)      git commit -m 'merging'
 #
 
-# ///// 1:39:15
+# ///// 2:17:00
