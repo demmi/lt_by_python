@@ -6,8 +6,9 @@
 #
 class Audio:
     def __init__(self, name, duration):
-        self.name = name
         self.duration = duration
+        self.name = name
+
 
     def play(self):
         return 'playback'
@@ -20,7 +21,7 @@ class Music(Audio):
     def __init__(self, artist, name, duration, genre, year, mood):
         super().__init__(name, duration)
         self.artist = artist
-        self.name = name
+        # self.name = name
         # self.duration = duration
         self.genre = genre
         self.year = year
@@ -34,16 +35,21 @@ class Music(Audio):
 
 
 song_001 = Music('The Beatles', 'Hey Jude', '7:05', 'pop rock', 1968, '100-000')
-song_002 = Music('Nirvana', 'Smells Like Teen Spirit	', '4:38', 'grunge', 1991, '101-010')
+song_002 = Music('Nirvana', 'Smells Like Teen Spirit', '4:38', 'grunge', 1991, '101-010')
 music_001 = Music('Mozart', 'Symphony No.40', '26:24', 'classic', 1788, '111-111')
 music_002 = Music('Yann Tiersen', 'La valse d\'Amélie', '2:00', 'Valse musette', 2001, '010-010')
 
 print(song_001.get_mood())  # mood of the Hey Jude is 100-000
+song_001.set_mood('100-001')
+print(song_001.get_mood())  # mood of the Hey Jude is 100-001
 print(music_002.play())  # playback
 
 playlist_01 = [song_002, music_002, song_001]
 for item in playlist_01:
-    print(item.__dict__)
+    print(item.__dict__.values())
+# dict_values(['4:38', 'Smells Like Teen Spirit', 'Nirvana', 'grunge', 1991, '101-010'])
+# dict_values(['2:00', "La valse d'Amélie", 'Yann Tiersen', 'Valse musette', 2001, '010-010'])
+# dict_values(['7:05', 'Hey Jude', 'The Beatles', 'pop rock', 1968, '100-001'])
 #
 # 5.2. Cоздайте репозиторий на Github и отправте файл с домашним заданием в этот удаленный репозиторий
 #
