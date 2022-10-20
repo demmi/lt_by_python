@@ -1,9 +1,9 @@
 # OOP. GIT. GITHUB
 # ----- Создаем класс Employee с атрибутами (параметрами) name, surname
 # class Employee:
-#     def __init__(self, name, surname):  # __init__ это конструктор
-#         self.name = name  # задаем атрибут name
-#         self.surname = surname  # задаем атрибут surname
+#     def __init__(self, name, surname):  # __init__ это конструктор атрибутов объектов класса
+#         self.name = name  # задаем атрибут объекта name
+#         self.surname = surname  # задаем атрибут объекта surname
 #
 #
 # employee1 = Employee('Alex', 'Smith')  # Создаем объект класса Employee с конкретными аргументами
@@ -17,7 +17,7 @@
 # ----- Принцип наследования -----
 # class Employee:  # Создаем класс Employee
 #     def __init__(self, name, surname):
-#         self.name = name  # задаем атрибуты
+#         self.name = name  # задаем атрибуты объекта
 #         self.surname = surname
 #
 #     def walk(self):  # создаем метод (функцию, действие) класса
@@ -26,12 +26,12 @@
 #
 # employee1 = Employee('Alex', 'Smith')  # создаем employee1, объект класса Employee
 # print(employee1.name)  # Alex
-# print(employee1.walk())  # I can walk! Он уже имеет walk(), метод класса Employee
+# print(employee1.walk())  # I can walk! - Он уже имеет walk(), метод класса Employee
 #
 #
 # class Developer(Employee):  # создаем подкласс Developer в классе Employee
 #     def __init__(self, name, surname, language):  # вводим в подкласс свой атрибут, language
-#         super().__init__(name, surname)  # super(), ссылка на родительский класс с его атрибутами
+#         super().__init__(name, surname)  # super() запускает метод __init__ родительского класса внутри дочернего
 #         self.language = language
 #
 #     def coding(self):  # даем подклассу свой метод, coding
