@@ -1,5 +1,5 @@
 # Lesson 06 html, css-selectors, xpath
-# ----- Поиск элементов -----
+# ----- импорт методов -----
 import time
 # import pytest
 from selenium import webdriver
@@ -7,8 +7,10 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
+
+# ----- поиск элементов -----
 driver.get("http://suninjuly.github.io/cats.html")  # открыть сайт, страницу cats
-time.sleep(5)  # задержка 5 сек
+time.sleep(3)  # задержка 3 сек
 
 # --- найдем картинку кота по имени bullet и нажмем под ней кнопку
 bullet_cat=driver.find_element(By.XPATH, "/html/body/main/div/div/div/div[1]/div/div/div/div/button[1]").click()
@@ -24,4 +26,4 @@ time.sleep(5)
 #     time.sleep(5)
 
 
-# ////////// 1:25:55
+# ////////// End
