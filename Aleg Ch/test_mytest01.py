@@ -15,10 +15,10 @@ time.sleep(3)  # задержка 3 сек
 
 
 # # --- протестируем текст 'Bullet cat'
-# def test_1():
-#     bullet_cat_text = driver.find_element(By.XPATH, '//p[text()="Bullet cat"]').text
-#     assert bullet_cat_text == 'Bullet cat', 'wrong!'
-#     time.sleep(3)
+def test_1():
+    bullet_cat_text = driver.find_element(By.XPATH, '//p[text()="Bullet cat"]').text
+    assert bullet_cat_text == 'Bullet cat', 'wrong!'
+    time.sleep(3)
 # 1 passed, 1 warning in 12.86ss
 
 
@@ -30,9 +30,7 @@ time.sleep(3)  # задержка 3 сек
 # test_mytest01.py::test_2 FAILED                                          [100%]
 # test_mytest01.py:24 (test_2)
 # 'Bullet cat' != 'Bulletcat'
-
+#
 # Expected :'Bulletcat'
 # Actual   :'Bullet cat'
 # 1 failed, 1 warning in 9.46s
-
-
