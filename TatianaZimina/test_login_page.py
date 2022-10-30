@@ -8,7 +8,6 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver.get('https://www.saucedemo.com/')
 
-
 def test_title():
     title = driver.title
     assert title == 'Swag Labs'
