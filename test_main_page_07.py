@@ -152,19 +152,19 @@
 # Создаем в корне проекта __init__.py — пустой файл для того, чтобы Python распознавал папку проекта,
 # как Python модуль, что позволяет нам использовать его объекты внутри других частей проекта.
 
-import time
-import pytest
-from .pages.main_page import MainPage
-
-link = 'http://selenium1py.pythonanywhere.com/ru/'
-
-
-def test_guest_can_go_to_catalogue(browser):  # даем тесту говорящее название
-    page = MainPage(browser, link)  # Создаём объект page класса MainPage
-    page.open_page()  # для открытия страницы используем метод, унаследованный из класса BasePage
-    page.go_to_catalogue()  # для перехода в каталог используем метод, унаследованный из класса MainPage
-    time.sleep(1)
-
+# import time
+# import pytest
+# from .pages.main_page import MainPage
+#
+# link = 'http://selenium1py.pythonanywhere.com/ru/'
+#
+#
+# def test_guest_can_go_to_catalogue(browser):  # даем тесту говорящее название
+#     page = MainPage(browser, link)  # Создаём объект page класса MainPage
+#     page.open_page()  # для открытия страницы используем метод, унаследованный из класса BasePage
+#     page.go_to_catalogue()  # для перехода в каталог используем метод, унаследованный из класса MainPage
+#     time.sleep(1)
+#
 
 # Выносим локаторы в отдельный файл locators.py
 # Для поиска элементов пишем туда: from selenium.webdriver.common.by import By
@@ -174,5 +174,88 @@ def test_guest_can_go_to_catalogue(browser):  # даем тесту говоря
 # В main_page делаем импорт класса MainPageLocators
 # и ссылаемся на локатор: self.browser.find_element(*MainPageLocators.catalogue_link).click()
 
+# ----- Создаем общий метод для тестирования наличия элементов
+# Добавляем в base_page.py функцию
+#     def element_is_present(self, method, locator):
+#         try:
+#             self.browser.find_element(method, locator)
+#         except NoSuchElementException:
+#             print('Element is not present')
+# и импортируем из селениума исключение NoSuchElementException
+# Аргументы: method - как искать, locator - что искать
+#
+# import time
+# import pytest
+# from .pages.main_page import MainPage
+#
+# link = 'http://selenium1py.pythonanywhere.com/ru/'
+#
+#
+# def test_guest_can_go_to_catalogue(browser):  # даем тесту говорящее название
+#     page = MainPage(browser, link)  # Создаём объект page класса MainPage
+#     page.open_page()  # для открытия страницы используем метод, унаследованный из класса BasePage
+#     page.should_be_link_to_product_page()  # Проверяем, есть ли ссылка перехода в каталог
+#     page.go_to_catalogue()  # для перехода в каталог используем метод, унаследованный из класса MainPage
+#     time.sleep(1)
+#
 
-# ///// 1:40:22
+# ----- Добавим авторизацию
+# Проверим:
+# 1) что мы действительно на этой странице
+# 2) что есть поля для авторизации - форма "Войти" и форма "Зарегистрировавться"
+# Создадим локаторы LOGIN_FORM и REGISTER_FORM
+# Создаем в папке page файл login_page.py
+# мпортируем в него from .locators import LoginPageLocator
+#
+import pytest
+import time
+from .pages.main_page import MainPage
+from .pages.login_page import LoginPage
+
+link = 'http://selenium1py.pythonanywhere.com/ru/'
+
+# Тест проверяет, что пользователь может перейти с главной страницы сайта на страницу с товарами
+# @pytest.mark.smoke
+# def test_guest_can_go_to_catalogue(browser):
+#     # создает экземпляр главной страницы - Main Page
+#     page = MainPage(browser, link)
+#     # открывает страницу
+#     page.open_page()
+#     # проверяет, что на главной странице присутствует ссылка на страницу товаров
+#     page.should_be_link_to_product_page()
+#     # переходит на страницу с товарами
+#     page.go_to_product_page()
+
+
+
+# Тест проверяет, что пользователь может перейти с главной страницы сайта на страницу авторизации
+@pytest.mark.regression
+def test_guest_can_go_to_login_page(browser):
+    # создает экземпляр главной страницы - Main Page
+    page = MainPage(browser, link)
+    # открывает страницу
+    page.open_page()
+    # переходит на страницу авторизации
+    page.go_to_login_page()
+    time.sleep(2)
+    # создает экземпляр страницы авторизации
+    page = LoginPage(browser, link)
+    # проверяет, что текущая страница является страницей авторизации
+    page.should_be_login_page()
+
+# ///// 2:36:25
+
+# Тест проверяет, что пользователь может зарегистрироваться
+# def test_user_сan_autorize(browser):
+#     link = 'http://selenium1py.pythonanywhere.com/ru/accounts/login/'
+#     # создает экземпляр страницы авторизации
+#     page = LoginPage(browser, link)
+#     # открывает страницу авторизации
+#     page.open_page()
+#     # регистрирует нового пользователя
+#     page.register_user(email=str(time.time()) + '@mail.org', password='QAZ123edc!')
+#     # проверяет, что пользователь авторизован
+#     page.should_be_autorized_user()
+
+
+# /////
