@@ -13,7 +13,9 @@
 #         self.browser.find_element(By.XPATH, '//*[@id="browse"]/li/ul/li[1]/a').click()
 
 
-# --- Локаторы - '//*[@id="browse"]/li/ul/li[1]/a' - обычно для удобства выносятся в отдельный файл (locators.py)
+# --- Локаторы
+# локаторы - '//*[@id="browse"]/li/ul/li[1]/a' - обычно выносятся в отдельный файл (locators.py)
+
 from .base_page import BasePage
 # from selenium.webdriver.common.by import By  # перенесли в locators.py
 from .locators import MainPageLocators
@@ -23,6 +25,6 @@ class MainPage(BasePage):
     def should_be_link_to_product_page(self):
         assert self.element_is_present(*MainPageLocators.CATALOGUE_LINK)
 
-    def go_to_catalogue(self):
+    def go_to_product_page(self):
         self.browser.find_element(*MainPageLocators.CATALOGUE_LINK).click()
 
